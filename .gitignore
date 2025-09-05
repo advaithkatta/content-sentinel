@@ -54,7 +54,7 @@ docker/*.pid
 docker/*.sock
 
 # --- Environment / Config ---
-.env
+#.env
 .env.local
 .env.*.local
 *.secret
