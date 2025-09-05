@@ -1,0 +1,87 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environment
+.venv/
+venv/
+ENV/
+env/
+
+# Jupyter notebooks
+.ipynb_checkpoints/
+
+# --- FastAPI / API ---
+*.db
+*.sqlite3
+*.log
+
+# --- AI / Models ---
+ai/__pycache__/
+ai/*.bin
+ai/*.pt
+ai/*.h5
+ai/*.onnx
+ai/models/
+ai/cache/
+
+# Hugging Face cache
+~/.cache/huggingface/
+huggingface/
+
+# --- Node / Web frontend ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Build output
+web/dist/
+web/build/
+web/.next/
+
+# --- Docker ---
+docker/*.pid
+docker/*.sock
+
+# --- Environment / Config ---
+.env
+.env.local
+.env.*.local
+*.secret
+*.key
+
+# --- IDE ---
+.vscode/
+.idea/
+*.iml
+*.swp
+*.swo
+
+# --- OS files ---
+.DS_Store
+Thumbs.db
+
+# --- Solidity / Blockchain ---
+# Hardhat
+artifacts/
+cache/
+typechain/
+coverage/
+coverage.json
+
+# Truffle
+build/
+migrations/.DS_Store
+
+# Ganache logs
+ganache.log
