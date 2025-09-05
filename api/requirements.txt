@@ -1,0 +1,5 @@
+fastapi==0.103.0           # Web framework for building API endpoints
+uvicorn[standard]==0.23.1  # ASGI server to run FastAPI
+web3==6.7.0                # Interact with Ethereum blockchain
+python-dotenv==1.0.0       # Load environment variables from .env
+pydantic==2.6.2            # Data validation for request/response models

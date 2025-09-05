@@ -1,0 +1,4 @@
+qiskit==0.46.3
+qiskit-aer==0.12.0
+qiskit-terra==0.46.3
+cryptography>=41.0.0
