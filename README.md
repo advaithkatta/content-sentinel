@@ -82,6 +82,17 @@ curl http://127.0.0.1:8000/content/6e116857033694cded64acea7feafcf845e2da20dbc55
   Block time: Thu Sep 04 2025 21:24:22 GMT-0400 (Eastern Daylight Time)
 
 
+ Simulating QKD...
+Shared secret key established!
+
+Alice → Bob (encrypted): gAAAAABoukZySoxPIf9kcGP7xwldjs5zCELiRAU1kOBIsf9xr9edSX28P2qpmvINERPLMV-Nn-LpYtiomIeJb6cGErYPLkDadb8EPn8hzF9mGvv5BPI9Qbi7mWU5KOGR0AUf-zcLsmW1
+Bob received from Alice: I think this post should be removed.
+Bob → Alice (encrypted): gAAAAABoukZya1EmVRUA60zxvOeBprMuyp-01N_yzOL9aF5j118JcLpx3XGvUzzA6OLCTRQOB-GgtWRBE9moU5wxTR_4Oth_HcKZ6BZBlszkTqI2JMAZfHE=
+Alice received from Bob: Agreed, let’s vote remove.
+
+
+
+
 
 
 
