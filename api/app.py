@@ -1,4 +1,4 @@
-import os, hashlib
+import os, hashlib, json
 from fastapi import FastAPI
 from pydantic import BaseModel
 from dotenv import load_dotenv
@@ -8,6 +8,7 @@ from ai.inference import analyze_content
 load_dotenv()
 app = FastAPI(title="Content Sentinel API")
 
+# Load env vars
 RPC = os.getenv("RPC_URL", "http://127.0.0.1:8545")
 CONTRACT_ADDR = os.getenv("CONTRACT_ADDR")
 
@@ -16,24 +17,26 @@ ABI_PATH = os.path.join(BASE_DIR, "chain", "ContentSentinel.abi.json")
 
 PK = os.getenv("PRIVATE_KEY")
 
+# Web3 setup
 w3 = Web3(Web3.HTTPProvider(RPC))
 with open(ABI_PATH) as f:
-    ABI = f.read()
-import json; ABI = json.loads(ABI)
+    ABI = json.load(f)
+
 contract = w3.eth.contract(address=Web3.to_checksum_address(CONTRACT_ADDR), abi=ABI)
 acct = w3.eth.account.from_key(PK)
 
+# Request models
 class AnalyzeReq(BaseModel):
     content: str
 
 class VoteReq(BaseModel):
     content_hash: str
-    choice: int  # 0=Remove,1=Label,2=Allow
+    choice: int  # 0=Remove, 1=Label, 2=Allow
 
+# Routes
 @app.post("/analyze")
 def analyze(req: AnalyzeReq):
     res = analyze_content(req.content)
-    # Derive content hash for chain reference
     chash = hashlib.sha256(req.content.encode("utf-8")).hexdigest()
     return {"content_hash": chash, "analysis": res}
 
@@ -59,3 +62,8 @@ def content_status(content_hash: str):
         "remove_votes": t[0], "label_votes": t[1], "allow_votes": t[2],
         "decision": t[3], "finalized": t[4]
     }
+
+# ✅ Entry point to run as server
+#if __name__ == "__main__":
+#    import uvicorn
+#    uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=True)
