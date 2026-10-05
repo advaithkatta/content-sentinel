@@ -10,7 +10,7 @@ Content Sentinel is a moderation system that combines AI, Blockchain, and QKD.
   * Quantum tech (simulated) protects moderator communications.
 
 
-## 1. System 
+### System 
 
   * AI Layer - Detects toxicity, spam, or misinformation in text.
   * Blockchain Layer - Records votes on a content hash, keeps moderator reputations.
@@ -18,7 +18,7 @@ Content Sentinel is a moderation system that combines AI, Blockchain, and QKD.
   * API Layer – Ties it all together with endpoints like `/analyze`, `/vote`, `/content/{hash}`.
 
 
-## 2. Installation Instructions
+### Installation Instructions
 
 ### Prerequisites
 
