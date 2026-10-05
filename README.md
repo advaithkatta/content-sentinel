@@ -1,34 +1,26 @@
 #  Content Sentinel
 **Transparent Moderation for Web 2.0**  
------
 
-## Introduction
 
-Content Sentinel is a **community-driven moderation system** that combines AI, Blockchain, and QKD.
-
-Think of it like this:
+Content Sentinel is a moderation system that combines AI, Blockchain, and QKD.
 
   * AI scans content for red flags.
-  * The community (moderators) votes on what should happen.
+  * Moderators vote on what should happen.
   * Blockchain makes the decision process **tamper-proof**.
-  * Quantum tech (simulated here) protects moderator communications.
+  * Quantum tech (simulated) protects moderator communications.
 
------
 
-## 1\. System Overview
+## 1. System 
 
-  * **AI Layer** – Detects toxicity, spam, or misinformation in text.
-  * **Blockchain Layer** – Records votes on a content hash, keeps moderator reputations.
-  * **Quantum Layer** – Simulates BB84 key exchange so that moderators could share keys securely.
-  * **API Layer** – Ties it all together with endpoints like `/analyze`, `/vote`, `/content/{hash}`.
+  * AI Layer - Detects toxicity, spam, or misinformation in text.
+  * Blockchain Layer - Records votes on a content hash, keeps moderator reputations.
+  * Quantum Layer – Simulates BB84 key exchange so that moderators could share keys securely.
+  * API Layer – Ties it all together with endpoints like `/analyze`, `/vote`, `/content/{hash}`.
 
------
 
-## 2\. Installation Instructions
+## 2. Installation Instructions
 
 ### Prerequisites
-
-You’ll need a few things set up first:
 
   * Python 3.10 or newer
   * pip & virtualenv
@@ -38,13 +30,13 @@ You’ll need a few things set up first:
 
 ### Steps
 
-1.  **Clone the repo**
+1.  Clone the repo
    ```bash
      git clone git@github.com:advaithkatta/content-sentinel.git
      cd content-sentinel
    ```  
     
-2.  **Create a virtual environment, activate it, and install dependencies**
+2.  Create a virtual environment, activate it, and install dependencies
  ```bash
     python3 -m venv venv
     source venv/bin/activate
@@ -72,7 +64,7 @@ You’ll need a few things set up first:
 ganache -p 8545
 ```
 
-When you open Ganache, you'll get 10 private keys. Choose any key and put it into your API .env and your blockchain .env:
+Choose any key and put it into your API .env and your blockchain .env:
 
 ```
 RPC_URL=http://127.0.0.1:8545 # url where ganache is running
@@ -159,22 +151,6 @@ curl http://127.0.0.1:8000/content/5b1a464448141cd26d4cec9dad7beb590e546500734d3
 {"remove_votes":0,"label_votes":0,"allow_votes":100,"decision":3,"finalized":true}
 ```
 
-### Quantum Layer
-
-```bash
-cd quantum
-python qkd_sim.py
-
-🔑 Simulating QKD...
-Shared secret key established!
-
-Alice → Bob (encrypted): gAAAAABou5allzBo-LY2y6mvg2DfuJKZtj2t-f_oAlWF8vMPFeEKaotw1-aOvg5VeC5zRMJOB1RsSKwSl5ZUFQIKmeQZeaVmXrCaGKIKCPbnY_uMb-QIX9PZEUewuFai1S-sXQH4aj0b
-Bob received from Alice: I think this post should be removed.
-Bob → Alice (encrypted): gAAAAABou5alrXTLtVIrhikjVaO6YdOg1fPVMdEouJDHJE8TuofwT8Ec7YpqUucs50hUB5jbGylZYoXtVs2k8Y2I5OfLJnzvSc1_VV9_0dsya7zm9kEdjyM=
-Alice received from Bob: Agreed, let’s vote remove.
-
-```
------
 
 ## 4\. File Walkthrough
 
@@ -183,20 +159,4 @@ Alice received from Bob: Agreed, let’s vote remove.
   * `ai/inference.py` → wraps HuggingFace models for text analysis.
   * `quantum/qkd_sim.py` → simulates the BB84 protocol for secure key exchange.
 
------
 
-
-## 6\. Troubleshooting
-
-  * **ABI file not found** → check ABI_PATH location in .env file
-  * **Dependency issues (like numpy vs qiskit)** → install only the versions in `requirements.txt`.
-  * **Port already in use** → stop the old process or run Ganache on a new port.
-
------
-
-## 7\. Next Steps
-
-  * Build a frontend UI so moderators don’t need curl.
-  * Add more AI categories (hate speech, bias, deepfake detection).
-  * Deploy contracts to Ethereum testnets like Sepolia.
-  * Replace simulated quantum exchange with real APIs.
